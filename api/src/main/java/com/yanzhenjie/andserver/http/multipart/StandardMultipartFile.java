@@ -60,6 +60,16 @@ public class StandardMultipartFile implements MultipartFile, Serializable {
     public String getName() {
         return this.fileItem.getFieldName();
     }
+    @Nullable
+    @Override
+    public String getRawFilename() {
+        String filename = this.fileItem.getName();
+        if (filename == null) {
+            // Should never happen.
+            return "";
+        }
+        return filename;
+    }
 
     @Nullable
     @Override
